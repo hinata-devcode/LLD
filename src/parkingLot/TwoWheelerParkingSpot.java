@@ -1,22 +1,15 @@
 package parkingLot;
 
-public class TwoWheelerParkingSpot extends ParkingSpot{
+public class TwoWheelerParkingSpot extends ParkingSpot {
 
 	public TwoWheelerParkingSpot(int id, int price) {
 		super(id, price);
 	}
 
 	@Override
-	void parkVehicle(Vehicle vh) {
-		super.setVh(vh);
-		super.setEmpty(false);
+	boolean canFitVehicle(Vehicle vh) {
+
+		return vh.getType() == VehicleType.FourWheeler;
 	}
 
-	@Override
-	void removeVehicle() {
-		super.setVh(null);
-		super.setEmpty(true);
-	}
-	
-	
 }

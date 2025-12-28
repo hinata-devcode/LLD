@@ -8,12 +8,12 @@ public class ParkingSpotManagerFactory {
 		this.slotDao = slotDao;
 	}
 
-	public ParkingSpotManager createManager(VehicleType type) {
+	public ParkingSpotManager createManager(VehicleType type,ParkingSpotStrategy strategy) {
 
 		if (type == VehicleType.FourWheeler) {
-			return new FourWheelerParkingSpotManager(slotDao.getFourWheelerList());
+			return new FourWheelerParkingSpotManager(slotDao.getFourWheelerList(),strategy);
 		} else {
-			return new TwoWheelerParkingSpotManager(slotDao.getTwoWheelerList());
+			return new TwoWheelerParkingSpotManager(slotDao.getTwoWheelerList(),strategy);
 		}
 
 	}

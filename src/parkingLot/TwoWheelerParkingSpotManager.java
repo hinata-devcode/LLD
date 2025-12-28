@@ -4,28 +4,23 @@ import java.util.List;
 
 public class TwoWheelerParkingSpotManager extends ParkingSpotManager {
 
-	List<ParkingSpot> twoWheelerList;
-	SlotDao slotDao;
-
-	public TwoWheelerParkingSpotManager(List<ParkingSpot> list) {
-		super(list); // creating list in factory pattern
-		this.twoWheelerList = list;
+	public TwoWheelerParkingSpotManager(List<ParkingSpot> parkingSpotList, ParkingSpotStrategy strategy) {
+		super(parkingSpotList, strategy);
 	}
 
 	@Override
-	ParkingSpot findParkingSpot(ParkingSpotStrategy strategy,Vehicle vehicle) {
-		var spot = strategy.findSlot(twoWheelerList);
-		if(spot!=null) {
-		spot.parkVehicle(vehicle);
-		return spot;
-		}
-		else
+	ParkingSpot findParkingSpot(Vehicle vehicle) {
+		var spot = strategy.findSlot(parkingSpotList);
+		if (spot != null) {
+			spot.parkVehicle(vehicle);
+			return spot;
+		} else
 			return null;
 	}
 
 	@Override
 	void removeParkingSpot(ParkingSpot spot) {
-	   spot.removeVehicle();	
+		spot.removeVehicle();
 	}
 
 }

@@ -4,12 +4,12 @@ import java.util.List;
 
 public class FourWheelerParkingSpotManager extends ParkingSpotManager {
 
-	public FourWheelerParkingSpotManager(List<ParkingSpot> parkingSpotList) {
-		super(parkingSpotList);
+	public FourWheelerParkingSpotManager(List<ParkingSpot> parkingSpotList,ParkingSpotStrategy strategy) {
+		super(parkingSpotList,strategy);
 	}
 
 	@Override
-	ParkingSpot findParkingSpot(ParkingSpotStrategy strategy, Vehicle vehicle) {
+	ParkingSpot findParkingSpot(Vehicle vehicle) {
 		var spot = strategy.findSlot(parkingSpotList);
 		if (spot != null) {
 			spot.parkVehicle(vehicle);

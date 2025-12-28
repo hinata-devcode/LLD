@@ -5,13 +5,14 @@ import java.util.List;
 public abstract class ParkingSpotManager {
 
 	protected List<ParkingSpot> parkingSpotList;
-	//private ParkingSpotStrategy strategy;
+	protected ParkingSpotStrategy strategy;
 
-	public ParkingSpotManager(List<ParkingSpot> parkingSpotList) {
+	public ParkingSpotManager(List<ParkingSpot> parkingSpotList,ParkingSpotStrategy strategy) {
 		this.parkingSpotList = parkingSpotList;
+		this.strategy=strategy;
 	}
 
-	abstract ParkingSpot findParkingSpot(ParkingSpotStrategy strategy,Vehicle vehicle);
+	abstract ParkingSpot findParkingSpot(Vehicle vehicle);
 	abstract void removeParkingSpot(ParkingSpot spot);
 
 }

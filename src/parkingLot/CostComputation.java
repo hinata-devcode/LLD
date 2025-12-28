@@ -4,7 +4,7 @@ public class CostComputation {
 	
 	private PricingStrategy strategy;
 	
-	public CostComputation(PricingStrategy strategy,Ticket ticket) {
+	public CostComputation(PricingStrategy strategy) {
 		this.strategy = strategy;
 	}
 

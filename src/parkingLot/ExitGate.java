@@ -6,13 +6,16 @@ public class ExitGate {
 	private CostComputation cost;
 	private ParkingSpotManager manager;
 
-	public ExitGate(Ticket ticket) {
+	public ExitGate(Ticket ticket, CostComputation computation) {
 		this.ticket = ticket;
+		this.cost = computation;
 	}
 
 	public int findCost() {
-	    manager.removeParkingSpot(ticket.getSpot());
-		return cost.computeCost(ticket);
+
+		int finalPrice = cost.computeCost(ticket);
+		manager.removeParkingSpot(ticket.getSpot());
+		return finalPrice;
 	}
 
 }

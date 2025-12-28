@@ -15,9 +15,9 @@ public class EntranceGate {
 		this.factory = factory;
 	}
 
-	public void bookParkinglot() {
-		manager = factory.createManager(vehicle.getType());
-		var spot = manager.findParkingSpot(new ParkingSpotStrategy(), vehicle);
+	public void bookParkinglot(ParkingSpotStrategy strategy) {
+		manager = factory.createManager(vehicle.getType(),strategy);
+		var spot = manager.findParkingSpot(vehicle);
 
 		if (spot != null)
 			ticket = createTicket(vehicle, spot);
